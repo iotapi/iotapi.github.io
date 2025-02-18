@@ -1,0 +1,41 @@
+<html>
+<body>
+
+<img id="logo" src="crest.png" style="display: none;">
+<canvas id="canvas"></canvas>
+
+<script>
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+var x = 0;
+var y = 0;
+var dx = 2;
+var dy = 2;
+var width = 1973 / 10;
+var height = 2309 / 10;
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+function drawLogo() {
+   logo = document.getElementById("logo");
+   ctx.drawImage(logo, x, y, width, height);
+}
+
+function draw() {
+   ctx.clearRect(0, 0, canvas.width, canvas.height);
+   drawLogo();
+
+   if (x + dx > canvas.width - width || x + dx < 0)
+      dx = -dx;
+   if (y + dy > canvas.height - height || y + dy < 0)
+      dy = -dy;
+
+   x += dx;
+   y += dy;
+}
+
+setInterval(draw, 10);
+</script>
+</body>
+</html>
