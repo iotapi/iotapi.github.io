@@ -4,78 +4,182 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        * {margin: 0; padding: 0;}
+
+        .tree ul {
+            padding-top: 20px; position: relative;
+            
+            transition: all 0.5s;
+            -webkit-transition: all 0.5s;
+            -moz-transition: all 0.5s;
+        }
+
+        .tree li {
+            float: left; text-align: center;
+            list-style-type: none;
+            position: relative;
+            padding: 20px 5px 0 5px;
+            
+            transition: all 0.5s;
+            -webkit-transition: all 0.5s;
+            -moz-transition: all 0.5s;
+        }
+
+        /*We will use ::before and ::after to draw the connectors*/
+
+        .tree li::before, .tree li::after{
+            content: '';
+            position: absolute; top: 0; right: 50%;
+            border-top: 1px solid #ccc;
+            width: 50%; height: 20px;
+        }
+        .tree li::after{
+            right: auto; left: 50%;
+            border-left: 1px solid #ccc;
+        }
+
+        /*We need to remove left-right connectors from elements without 
+        any siblings*/
+        .tree li:only-child::after, .tree li:only-child::before {
+            display: none;
+        }
+
+        /*Remove space from the top of single children*/
+        .tree li:only-child{ padding-top: 0;}
+
+        /*Remove left connector from first child and 
+        right connector from last child*/
+        .tree li:first-child::before, .tree li:last-child::after{
+            border: 0 none;
+        }
+        /*Adding back the vertical connector to the last nodes*/
+        .tree li:last-child::before{
+            border-right: 1px solid #ccc;
+            border-radius: 0 5px 0 0;
+            -webkit-border-radius: 0 5px 0 0;
+            -moz-border-radius: 0 5px 0 0;
+        }
+        .tree li:first-child::after{
+            border-radius: 5px 0 0 0;
+            -webkit-border-radius: 5px 0 0 0;
+            -moz-border-radius: 5px 0 0 0;
+        }
+
+        /*Time to add downward connectors from parents*/
+        .tree ul ul::before{
+            content: '';
+            position: absolute; top: 0; left: 50%;
+            border-left: 1px solid #ccc;
+            width: 0; height: 20px;
+        }
+
+        .tree li p{
+            border: 1px solid #ccc;
+            padding: 5px 10px;
+            text-decoration: none;
+            color: #666;
+            font-size: 11px;
+            display: inline-block;
+            
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            
+            transition: all 0.5s;
+            -webkit-transition: all 0.5s;
+            -moz-transition: all 0.5s;
+        }
+
+        /*Time for some hover effects*/
+        /*We will apply the hover effect the the lineage of the element also*/
+        .tree li p:hover, .tree li p:hover+ul li p {
+            background: #c8e4f8; color: #000; border: 1px solid #94a0b4;
+        }
+        /*Connector styles on hover*/
+        .tree li p:hover+ul li::after, 
+        .tree li p:hover+ul li::before, 
+        .tree li p:hover+ul::before, 
+        .tree li p:hover+ul ul::before{
+            border-color:  #94a0b4;
+        }
+
+    </style>
 </head>
 <body>
 
     <!-- <div id="tree"></div> -->
     <h1>Family 1</h1>
 
-    <ul>
-        <li>
-                Erin '1-800-HOT-SNOW' Burke (Alpha)
-                    <ul><li>Roxie Schmitz (Beta)</li></ul>
-        </li>
-    </ul>
+    <div class = "tree">
+        <ul>
+            <li>
+                    <p>Erin '1-800-HOT-SNOW' Burke (Alpha)</p>
+                        <ul><li><p>Roxie Schmitz (Beta)</p></li></ul>
+            </li>
+        </ul>
+    </div>
 
     <h1>Family 2</h1>
 
+    <div class="tree">
     <ul><li>
-        Brian 'Poker Face' Parker (Alpha)
+        <p>Brian 'Poker Face' Parker (Alpha)</p>
             <ul>
-                <li>Dave Reuterskoild (Beta)</li>
+                <li><p>Dave Reuterskoild (Beta)</p></li>
                 <li>
-                    Jeralee 'Smacks' Anderson (Mu) - Reactivation, transfer from ΒΟ
+                    <p>Jeralee 'Smacks' Anderson (Mu) - Reactivation, transfer from ΒΟ</p>
                         <ul>
                             <li>
-                                Stephanie 'Mangoe' Wokral (Nu)
+                                <p>Stephanie 'Mangoe' Wokral (Nu)</p>
                                     <ul>
                                         <li>
-                                            Michael 'TouTch' Allen (Xi)
+                                            <p>Michael 'TouTch' Allen (Xi)</p>
                                                 <ul>
                                                     <li>
-                                                        Nicholas 'nQbuTT' Abalos (Omicron)
-                                                            <ul><li>Rob 'Shmas-º' Rodriguez (Rho)</li></ul>
+                                                        <p>Nicholas 'nQbuTT' Abalos (Omicron)</p>
+                                                            <ul><li><p>Rob 'Shmas-º' Rodriguez (Rho)</p></li></ul>
                                                     </li>
                                                 </ul>
                                         </li>
                                         <li>
-                                            Steven 'SOLLOS' Becraft (Pi)
-                                                <ul><li>Brooke 'Boobie' Lipson (Rho)</li></ul>
+                                            <p>Steven 'SOLLOS' Becraft (Pi)</p>
+                                                <ul><li><p>Brooke 'Boobie' Lipson (Rho)</p></li></ul>
                                         </li>
                                     </ul>
                             </li>
                             <li>
-                                Heather 'T-HaZ3-T' Marquez (Omicron)
+                                <p>Heather 'T-HaZ3-T' Marquez (Omicron)</p>
                                     <ul>
-                                        <li>James 'X33Rnt' Pool (Pi)</li>
+                                        <li><p>James 'X33Rnt' Pool (Pi)</p></li>
                                         <li>
-                                            Becca 'Qwicc3' Juner (Sigma)
+                                            <p>Becca 'Qwicc3' Juner (Sigma)</p>
                                                 <ul>
                                                     <li>
-                                                        Justin 'CowBØ7' Paulson (Tau)
+                                                        <p>Justin 'CowBØ7' Paulson (Tau)</p>
                                                             <ul>
                                                                 <li>
-                                                                    Trevor 'lØbS#R' Pell (Upsilon)
+                                                                    <p>Trevor 'lØbS#R' Pell (Upsilon)</p>
                                                                         <ul>
-                                                                            <li>Colt 'wRptØR' Wettstein (Phi)</li>
+                                                                            <li><p>Colt 'wRptØR' Wettstein (Phi)</p></li>
                                                                             <li>
-                                                                                Scott 'nαrωØl' Warnert (Chi)
+                                                                                <p>Scott 'nαrωØl' Warnert (Chi)</p>
                                                                                     <ul>
                                                                                         <li>
-                                                                                            Max 'wø}Яüs' Fishman (Omega)
+                                                                                            <p>Max 'wø}Яüs' Fishman (Omega)</p>
                                                                                                 <ul>
                                                                                                     <li>
-                                                                                                        Mark 'sλmmøИ' Heisinger (Alpha Alpha)
+                                                                                                        <p>Mark 'sλmmøИ' Heisinger (Alpha Alpha)</p>
                                                                                                             <ul>
                                                                                                                 <li>
-                                                                                                                    Michael 'crØΔad' Langberg (Alpha Gamma)
+                                                                                                                    <p>Michael 'crØΔad' Langberg (Alpha Gamma)</p>
                                                                                                                         <ul>
                                                                                                                             <li>
-                                                                                                                                Chance '§kλ[Øp' Potter (Alpha Epsilon)
+                                                                                                                                <p>Chance '§kλ[Øp' Potter (Alpha Epsilon)</p>
                                                                                                                                     <ul>
                                                                                                                                         <li>
-                                                                                                                                            Hannah 'Λbμ]øη¡' Krieg (Alpha Zeta)
-                                                                                                                                                <ul><li>Lindsay 'CØԻΛ|' Gonor (Alpha Theta)</li></ul>
+                                                                                                                                            <p>Hannah 'Λbμ]øη¡' Krieg (Alpha Zeta)</p>
+                                                                                                                                                <ul><li><p>Lindsay 'CØԻΛ|' Gonor (Alpha Theta)</p></li></ul>
                                                                                                                                         </li>
                                                                                                                                     </ul>
                                                                                                                             </li>
@@ -95,147 +199,172 @@
                                         </li>
                                     </ul>
                             </li>
-                            <li>Jamie 'Bucket' Matheron (Mu)</li>
+                            <li><p>Jamie 'Bucket' Matheron (Mu)</p></li>
                         </ul>
                 </li>
             </ul>
     </ul></li>
+    </div>
 
     <h1>Family 3</h1>
 
+    <div class="tree">
     <ul>
         <li>
-            Tiffanie Harris (Alpha) - Transfer from ΖΡ
-                <ul><li>Julie McDonald (Beta)</li></ul>
+            <p>Tiffanie Harris (Alpha) - Transfer from ΖΡ</p>
+                <ul><li><p>Julie McDonald (Beta)</p></li></ul>
         </li>
     </ul>
+    </div>
 
     <h1>Family 4</h1>
 
-    <ul>
-        <li>Matt Lerner (Alpha)
-            <ul>
-                <li>
-                    Davis Lerner (Alpha Eta) - Reactivation, also in Family 9
-                        <ul><li>Laura Elliott (Alpha Theta)</li></ul>
-                </li>
-            </ul>
-        </li>
-    </ul>
+    <div class="tree">
+        <ul>
+            <li><p>Matt Lerner (Alpha)</p>
+                <ul>
+                    <li>
+                        <p>Davis Lerner (Alpha Eta) - Reactivation, also in Family 9</p>
+                            <ul>
+                                <li><p>Laura Elliott (Alpha Theta)</p>
+                                    <ul>
+                                        <li><p>Fiona Ffrench</p></li>
+                                    </ul>
+                                </li>
+                                <li><p>Rockwood Frank (Alpha Kappa)</p></li>
+                            </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
 
     <h1>Family 5</h1>
 
-    <ul><li>Amy Alger (Alpha)</li></ul>
+    <div class = "tree"><ul><li><p>Amy Alger (Alpha)</p></li></ul></div>
 
     <h1>Family 6</h1>
 
+    <div class="tree">
     <ul>
         <li><ul>
-                Mark 'Mouth' Degenkolb (Alpha)
+                <p>Mark 'Mouth' Degenkolb (Alpha)</p>
                 <li><ul>
                     <li>
-                        Amy 'Boone's' Stewart (Epsilon)
+                        <p>Amy 'Boone's' Stewart (Epsilon)</p>
                             <ul>
                                 <li>
-                                    Dan 'Yoda' Buffo (Zeta)
-                                        Kristen 'Hoodlum' Davis (Eta)
-                                            Zach 'Echolalia' Hubbard (Theta)
-                                                Kristen Gilli (Iota)
-                                                Aubrey 'JouLeS' Isbell (Kappa)
-                                                    Matt 'TYCXS' Talluto (Lambda)
-                                                        Emilie 'Otto Gelato' Drumm (Mu)
-                                                            Lyndsey 'ffraus meta' Krutein (Xi)
-                                                                Amanda 'Winkie' Witko (Omicron)
-                                                                    Laura 'Kurlie P' Sorvetti (Rho)
-                                                                Robin 'Boomf' Reil (Rho)
-                                                                    Aimee 'VUNVetti' Ware (Tau)
-                                                                        Maggie 'Marigold' Maratsos (Phi)
-                                                                            Michael 'HØBBeCz' Czabaranek (Psi)
-                                                                                Aidan 'Psykhe' Thurling (Omega)
-                                                                                    Leesa 'Höney🐝' Choy (Alpha Beta)
-                                                                                        Hugh '🅱ümble' Garmany (Alpha Delta)
-                                                                                            Jora Leigh (Alpha Epsilon)
-                                                                                                Michael Glenn (Alpha Eta)
-                                                                                        Faiha '🍒 Blössom' Larasanti (Alpha Epsilon)
-                                                                                            Noah Ravetch (Alpha Eta)
-                                                                    Jeffrey 'RicROHl' Brown (Upsilon)
-                                                                        Nicole 'Hermione' Cooper (Chi)
-                                                                            Brooke 'SASSAfRAS' Bradshaw (Psi)
-                                                                                Katelyn 'BOOMBAHST𝄽C' Dietz (Alpha Beta)
-                                                                                    Drake Freeman (Alpha Delta)
-                                                                        Andrew 'Moony' Parker (Omega)
-                                                                            Paul Desales (Alpha Beta)
-                                            Laura 'Juggs' Slania (Kappa)
-                                                Amy 'Designer Tweed' Reisman (Lambda)
-                                                    Lizz 'flat tire' Ketterer (Mu)
-                                                        Amy 'doorknob' Schultz (Omicron)
-                                                            Anthony 'phaicd' Hall (Pi)
-                                                                Austin 'Carca$50nne' Graves (Rho)
-                                                                    Kaylinn 'MeShUGGeNAh' Roseman (Phi)
-                                                                        Liliana 'ratatouille' Moore (Chi)
-                                                                            Rianna Uppal (Psi)
-                                                                            Alison 'serenity' Wendt (Alpha Alpha)
-                                                                                Mark '(bear)' Williams (Alpha Beta)
-                                                                                    Joey 'koda' Gordillo (Alpha Delta)
-                                                                                        Nora 'sgt schultz' Joseph (Alpha Epsilon)
-                                                                                            Sophie Guzules (Alpha Zeta)
-                                                                                                Alexandra Ogar (Alpha Eta)
-                                                                                    Matt 'legolas' North (Alpha Epsilon)
-                                                                                        Dane Dormedy (Alpha Zeta)
-                                                                                            Anthony Di Paola (Alpha Eta)
-                                                                                Abby 'eowyn' Armer (Alpha Gamma)
-                                                                    Joe 'SK33Ba' Merkel (Chi)
-                                                        Brian 'blowhole' DeMott (Pi)
-                                        Heather 'Flash' Wilkins (Kappa)
-                                            Rachel Grunskey (Lambda)
-                                                Matt 'Foghorn' O'Neal (Mu)
-                                                    Bryan 'DJ WIGHIB' Adamson (Nu)
-                                                        Aaron 'PYTHON' Azevedo (Xi)
-                                                            Harrison 'JaNGk' Wolf (Omicron)
-                                                                Casey 'N00B' Garretson (Pi)
-                                                                    Annalisa 'R-Dub Stubs' Conn (Rho)
-                                                                        Preston '(e)Shroghtum' Mahr (Sigma)
-                                                                            Kelsey 'D(c)reamer' Austin (Upsilon)
-                                                                        Patrick 'The Situation' Fina (Upsilon)
-                                                                            Tony 'The SpanIard (o)' Soto (Phi)
-                                                                                Eric 'The LIΦΛH3ART (c)' Strohm (Chi)
-                                                                                    Daniel 'The Sslvrtnng(r)' Henry (Psi)
-                                                                                        Kate Vanderslice (Omega)
-                                                                                Kristen 'The NotorIΦu$ K(g)P' Power (Psi)
-                                                                            Caleb 'The βoss' Dunne (Chi)
-                                                                                Kenneth 'The Caφtain' Alcazar (Psi)
-                                                                                    Rebecca 'The Wonder WΩm𝜶n' McKinley (Alpha Alpha)
-                                                                                        Bryce 'The ArXhitect' Gagner (Alpha Beta)
-                                                                                            Emma 'The Hero of WinΔs' Gracyk (Alpha Gamma)
-                                                                                                Anders 'The Wildfλower' Ferling (Alpha Delta)
-                                                                                                    Melanie Mitton (Alpha Epsilon)
-                                                                                            Troy Kawahara (Alpha Zeta)
-                                                                                                Weston Gonor (Alpha Eta)
-                                                                                        Kieran 'The Snarky Puppy' Althaus (Alpha Gamma)
-                                                                                            Madi Glozer (Alpha Zeta)
-                                                                Penny 'teaN¢' Lancaster (Sigma)
-                                                                    Karissa 'SHIIRLIE tEmpyl' Finn (Upsilon)
-                                                                        Chad Sickler (Chi)
-                                                                        Jake Gardner (Psi)
-                                                                            Nikole Knak (Omega)
-                                                            Michael 'tlb' Vallone (Pi)
-                                                                Dominic 'jedi master' Camargo (Phi)
-                                                                    Aaron 'BAMF-CAKES' Brown (Chi)
-                                                                        Roxanne Windover (Psi)
-                                                                            Shelli 'Nahlah' Crispen (Omega)
-                                                                                Ben 'Baymax' Hull (Alpha Alpha)
-                                                                                    Sean 'Ridley' Gonzales (Alpha Beta)
-                                                                                        Keegan 'Brodo Asogi' McLean (Alpha Epsilon)
-                                                                        Enoch 'Robin' Tsui (Omega)
-                                                                            Paul Alvestad (Alpha Beta)
-                                                                                Kent Giese (Alpha Delta)
-                                                                                    Jarrod Tart (Alpha Epsilon)
-                                                                                        Nicholas Tullio (Alpha Eta)
-                                                        Leigh 'STIKIN'BALLS' Finley (Rho)
-                                                            Phil Patterson (Tau)
-                                                            Alex 'M•rdtvfffeucs' Rojas (Phi)
-                                                    Steve '-o HIPER' Markley (Xi)
-                                                        Emily 'AUTO' McAdams (Rho)
+                                    <p>Dan 'Yoda' Buffo (Zeta)</p>
+                                        <ul>
+                                            <li>
+                                                <p>Kristen 'Hoodlum' Davis (Eta)</p>
+                                                    <ul>
+                                                        <li>
+                                                            <p>Zach 'Echolalia' Hubbard (Theta)</p>
+                                                                Kristen Gilli (Iota)
+                                                                Aubrey 'JouLeS' Isbell (Kappa)
+                                                                    Matt 'TYCXS' Talluto (Lambda)
+                                                                        Emilie 'Otto Gelato' Drumm (Mu)
+                                                                            Lyndsey 'ffraus meta' Krutein (Xi)
+                                                                                Amanda 'Winkie' Witko (Omicron)
+                                                                                    Laura 'Kurlie P' Sorvetti (Rho)
+                                                                                Robin 'Boomf' Reil (Rho)
+                                                                                    Aimee 'VUNVetti' Ware (Tau)
+                                                                                        Maggie 'Marigold' Maratsos (Phi)
+                                                                                            Michael 'HØBBeCz' Czabaranek (Psi)
+                                                                                                Aidan 'Psykhe' Thurling (Omega)
+                                                                                                    Leesa 'Höney🐝' Choy (Alpha Beta)
+                                                                                                        Hugh '🅱ümble' Garmany (Alpha Delta)
+                                                                                                            Jora Leigh (Alpha Epsilon)
+                                                                                                                Michael Glenn (Alpha Eta)
+                                                                                                        Faiha '🍒 Blössom' Larasanti (Alpha Epsilon)
+                                                                                                            Noah Ravetch (Alpha Eta)
+                                                                                    Jeffrey 'RicROHl' Brown (Upsilon)
+                                                                                        Nicole 'Hermione' Cooper (Chi)
+                                                                                            Brooke 'SASSAfRAS' Bradshaw (Psi)
+                                                                                                Katelyn 'BOOMBAHST𝄽C' Dietz (Alpha Beta)
+                                                                                                    Drake Freeman (Alpha Delta)
+                                                                                        Andrew 'Moony' Parker (Omega)
+                                                                                            Paul Desales (Alpha Beta)
+                                                        </li>
+                                                        <li>
+                                                            Laura 'Juggs' Slania (Kappa)
+                                                                Amy 'Designer Tweed' Reisman (Lambda)
+                                                                    Lizz 'flat tire' Ketterer (Mu)
+                                                                        Amy 'doorknob' Schultz (Omicron)
+                                                                            Anthony 'phaicd' Hall (Pi)
+                                                                                Austin 'Carca$50nne' Graves (Rho)
+                                                                                    Kaylinn 'MeShUGGeNAh' Roseman (Phi)
+                                                                                        Liliana 'ratatouille' Moore (Chi)
+                                                                                            Rianna Uppal (Psi)
+                                                                                            Alison 'serenity' Wendt (Alpha Alpha)
+                                                                                                Mark '(bear)' Williams (Alpha Beta)
+                                                                                                    Joey 'koda' Gordillo (Alpha Delta)
+                                                                                                        Nora 'sgt schultz' Joseph (Alpha Epsilon)
+                                                                                                            Sophie Guzules (Alpha Zeta)
+                                                                                                                Alexandra Ogar (Alpha Eta)
+                                                                                                    Matt 'legolas' North (Alpha Epsilon)
+                                                                                                        Dane Dormedy (Alpha Zeta)
+                                                                                                            Anthony Di Paola (Alpha Eta)
+                                                                                                Abby 'eowyn' Armer (Alpha Gamma)
+                                                                                    Joe 'SK33Ba' Merkel (Chi)
+                                                                        Brian 'blowhole' DeMott (Pi)
+                                                        </li>
+                                                    </ul>
+                                            </li>
+                                            <li>
+                                                Heather 'Flash' Wilkins (Kappa)
+                                                    Rachel Grunskey (Lambda)
+                                                        Matt 'Foghorn' O'Neal (Mu)
+                                                            Bryan 'DJ WIGHIB' Adamson (Nu)
+                                                                Aaron 'PYTHON' Azevedo (Xi)
+                                                                    Harrison 'JaNGk' Wolf (Omicron)
+                                                                        Casey 'N00B' Garretson (Pi)
+                                                                            Annalisa 'R-Dub Stubs' Conn (Rho)
+                                                                                Preston '(e)Shroghtum' Mahr (Sigma)
+                                                                                    Kelsey 'D(c)reamer' Austin (Upsilon)
+                                                                                Patrick 'The Situation' Fina (Upsilon)
+                                                                                    Tony 'The SpanIard (o)' Soto (Phi)
+                                                                                        Eric 'The LIΦΛH3ART (c)' Strohm (Chi)
+                                                                                            Daniel 'The Sslvrtnng(r)' Henry (Psi)
+                                                                                                Kate Vanderslice (Omega)
+                                                                                        Kristen 'The NotorIΦu$ K(g)P' Power (Psi)
+                                                                                    Caleb 'The βoss' Dunne (Chi)
+                                                                                        Kenneth 'The Caφtain' Alcazar (Psi)
+                                                                                            Rebecca 'The Wonder WΩm𝜶n' McKinley (Alpha Alpha)
+                                                                                                Bryce 'The ArXhitect' Gagner (Alpha Beta)
+                                                                                                    Emma 'The Hero of WinΔs' Gracyk (Alpha Gamma)
+                                                                                                        Anders 'The Wildfλower' Ferling (Alpha Delta)
+                                                                                                            Melanie Mitton (Alpha Epsilon)
+                                                                                                    Troy Kawahara (Alpha Zeta)
+                                                                                                        Weston Gonor (Alpha Eta)
+                                                                                                Kieran 'The Snarky Puppy' Althaus (Alpha Gamma)
+                                                                                                    Madi Glozer (Alpha Zeta)
+                                                                        Penny 'teaN¢' Lancaster (Sigma)
+                                                                            Karissa 'SHIIRLIE tEmpyl' Finn (Upsilon)
+                                                                                Chad Sickler (Chi)
+                                                                                Jake Gardner (Psi)
+                                                                                    Nikole Knak (Omega)
+                                                                    Michael 'tlb' Vallone (Pi)
+                                                                        Dominic 'jedi master' Camargo (Phi)
+                                                                            Aaron 'BAMF-CAKES' Brown (Chi)
+                                                                                Roxanne Windover (Psi)
+                                                                                    Shelli 'Nahlah' Crispen (Omega)
+                                                                                        Ben 'Baymax' Hull (Alpha Alpha)
+                                                                                            Sean 'Ridley' Gonzales (Alpha Beta)
+                                                                                                Keegan 'Brodo Asogi' McLean (Alpha Epsilon)
+                                                                                Enoch 'Robin' Tsui (Omega)
+                                                                                    Paul Alvestad (Alpha Beta)
+                                                                                        Kent Giese (Alpha Delta)
+                                                                                            Jarrod Tart (Alpha Epsilon)
+                                                                                                Nicholas Tullio (Alpha Eta)
+                                                                Leigh 'STIKIN'BALLS' Finley (Rho)
+                                                                    Phil Patterson (Tau)
+                                                                    Alex 'M•rdtvfffeucs' Rojas (Phi)
+                                                            Steve '-o HIPER' Markley (Xi)
+                                                                Emily 'AUTO' McAdams (Rho)
+                                            </li>
+                                        </ul>
                                 </li>
                                 <li>
                                     Jeff 'Cream Filling' Napior (Eta)
@@ -333,6 +462,7 @@
             </ul></li>
         </ul></li>
     </ul>
+    </div>
 
     <h1>Family 7</h1>
 
