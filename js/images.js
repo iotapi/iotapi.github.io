@@ -1,16 +1,20 @@
+document.addEventListener("DOMContentLoaded", function () {
+    const folder = "pictures/";  // Update with the correct folder
+    const jsonFile = `${folder}images.json`;
 
-var repo = "iotapi/iotapi.github.io";
-var folder = "img/";
+    fetch(jsonFile)
+        .then(response => response.json())
+        .then(images => {
+            const container = document.getElementById("image-container"); // Make sure this exists in your HTML
 
-fetch(`https://api.github.com/repos/${repo}/contents/${folder}`)
-    .then(response => response.json())
-    .then(files => {
-        files.forEach(file => {
-            if (file.name.match(/\.(jpe?g|png|gif)$/i)) {
+            images.forEach(image => {
                 let img = document.createElement("img");
-                img.src = file.download_url;
-                document.body.appendChild(img);
-            }
-        });
-    })
-    .catch(error => console.error("Error fetching images:", error));
+                img.src = folder + image;
+                img.alt = image;
+                img.style.width = "200px";  // Adjust as needed
+                img.style.margin = "10px";
+                container.appendChild(img);
+            });
+        })
+        .catch(error => console.error("Error loading images:", error));
+});
