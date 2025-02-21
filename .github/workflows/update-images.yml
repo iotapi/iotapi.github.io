@@ -27,7 +27,7 @@ jobs:
           RESPONSE=$(curl -s "https://api.github.com/repos/$REPO/contents/$FOLDER")
           
           # Fetch GitHub API Data
-          IMAGE_LIST=$(echo "$RESPONSE" | jq --arg current_date "$CURRENT_DATE" '[.[] | select(.name | test("\\.(jpg|jpeg|png|gif)$"; "i")) | {name: .name, modified: .sha, timestamp: $current_date}]')
+          IMAGE_LIST=$(echo "$RESPONSE" | jq --arg current_date "$CURRENT_DATE" '[.[] | select(.name | test("\\.(jpg|jpeg|png|gif)$"; "i")) | {name: .name, modified: .sha, timestamp: .commit.committer.date,}]')
 
           # Save to JSON
           echo "$IMAGE_LIST" > "$OUTPUT_FILE"
