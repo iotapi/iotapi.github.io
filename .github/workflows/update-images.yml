@@ -20,8 +20,11 @@ jobs:
           FOLDER="pictures"
           OUTPUT_FILE="pictures/images.json"
 
+          # Get the current date and time in the desired format
+          CURRENT_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          
           # Fetch GitHub API Data
-          IMAGE_LIST=$(curl -s "https://api.github.com/repos/$REPO/contents/$FOLDER" | jq -r '[.[] | select(.name | test("\\.(jpg|jpeg|png|gif)$"; "i")) | .name]')
+          IMAGE_LIST=$(curl -s "https://api.github.com/repos/$REPO/contents/$FOLDER" | jq -r '[.[] | select(.name | test("\\.(jpg|jpeg|png|gif)$"; "i")) | {name: .name, modified: .sha, timestamp: "'$CURRENT_DATE'"}]
 
           # Save to JSON
           echo "$IMAGE_LIST" > "$OUTPUT_FILE"
