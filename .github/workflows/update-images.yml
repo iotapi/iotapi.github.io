@@ -1,0 +1,38 @@
+name: Update Images JSON
+
+on:
+  push:
+    branches:
+      - main  # Change to your default branch if needed
+      - test-image
+
+jobs:
+  update-json:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Get Image List and Update JSON
+        run: |
+          REPO="iotapi/iotapi.github.io"
+          FOLDER="pictures"
+          OUTPUT_FILE="pictures/images.json"
+
+          # Fetch GitHub API Data
+          IMAGE_LIST=$(curl -s "https://api.github.com/repos/$REPO/contents/$FOLDER" | jq -r '[.[] | select(.name | test("\\.(jpg|jpeg|png|gif)$"; "i")) | .name]')
+
+          # Save to JSON
+          echo "$IMAGE_LIST" > "$OUTPUT_FILE"
+
+      - name: Commit and Push Changes
+        env:
+            GITHUB_TOKEN: ${{ secrets.GH_PAT }}  # Use the stored token
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
+          git add pictures/images.json
+          git commit -m "Auto-update images.json" || echo "No changes to commit"
+          git push
