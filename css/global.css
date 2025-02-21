@@ -11,3 +11,7 @@ body{
 #header a {
     padding: 3em;
 }
+
+a:visited {
+    color: blue;
+}
