@@ -1,11 +1,13 @@
-const template = document.createElement('template');
+// NOTE TO FUTURE CODERS: put "header__" before every variable name to prevent overwriting
 
-template.innerHTML = `
+const header__template = document.createElement('template');
+
+header__template.innerHTML = `
     <img src="img/crest.png" style="max-width: 200px;">
     <h1>Kappa Kappa Psi - Iota Pi</h1>
     <h2>California Polytechnic State University</h2>
     <p>The Iota Pi website is currently under maintenance. Please come back soon or join the website team! Also we are testing things out currently!</p>
 `;
 
-const header = document.getElementById('header');
-header.appendChild(template.content);
+const header__element = document.getElementById('header');
+header__element.appendChild(header__template.content);
