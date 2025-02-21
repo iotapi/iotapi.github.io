@@ -1,4 +1,4 @@
-var folder = "test/";
+var folder = "images/";
 
 fetch(folder)
     .then(response => response.text())  // Get response as text (HTML directory listing)
