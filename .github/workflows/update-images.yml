@@ -20,14 +20,41 @@ jobs:
           FOLDER="pictures"
           OUTPUT_FILE="pictures/images.json"
 
-          # Get the current date and time in the desired format
-          CURRENT_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          # GitHub Token from secrets
+          GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
 
-          # Fetch image files from GitHub API
-          RESPONSE=$(curl -s "https://api.github.com/repos/$REPO/contents/$FOLDER")
+          # Fetch image files from GitHub API with authentication
+          RESPONSE=$(curl -s -H "Authorization: token $GITHUB_TOKEN" "https://api.github.com/repos/$REPO/contents/$FOLDER")
           
-          # Fetch GitHub API Data
-          IMAGE_LIST=$(echo "$RESPONSE" | jq '[.[] | select(.name | test("\\.(jpe?g|png|gif)$"; "i")) | {name: .name, url: .download_url, modified: .commit.committer.date, timestamp: .commit.committer.date}]')
+          # Initialize an empty JSON array to store image data
+          IMAGE_LIST="[]"
+
+          # Loop through the files and fetch commit data for each one
+          for row in $(echo "$RESPONSE" | jq -r '.[] | select(.name | test("\\.(jpe?g|png|gif)$"; "i")) | @base64'); do
+            # Decode the row from base64
+            _jq() {
+              echo ${row} | base64 --decode | jq -r ${1}
+            }
+
+            # Extract file name and download URL
+            file_name=$(_jq '.name')
+            file_url=$(_jq '.download_url')
+
+            # Fetch commit data to get the updated_at (last modified) date
+            COMMIT_RESPONSE=$(curl -s -H "Authorization: token $GITHUB_TOKEN" "https://api.github.com/repos/$REPO/commits?path=$FOLDER/$file_name")
+            
+            # Extract the last commit date for the file
+            last_commit_date=$(echo "$COMMIT_RESPONSE" | jq -r '.[0].commit.committer.date')
+
+            # If no date is found, fallback to a placeholder value
+            if [ "$last_commit_date" == "null" ]; then
+              last_commit_date="Unknown"
+            fi
+
+            # Append the image data with the modified date
+            IMAGE_LIST=$(echo "$IMAGE_LIST" | jq --arg name "$file_name" --arg url "$file_url" --arg timestamp "$last_commit_date" \
+            '. += [{"name": $name, "url": $url, "timestamp": $timestamp}]')
+          done
 
           # Save to JSON
           echo "$IMAGE_LIST" > "$OUTPUT_FILE"
