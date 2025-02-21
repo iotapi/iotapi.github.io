@@ -26,8 +26,7 @@ jobs:
           # Fetch image files from GitHub API with authentication
           RESPONSE=$(curl -s -H "Authorization: token $GITHUB_TOKEN" "https://api.github.com/repos/$REPO/contents/$FOLDER")
 
-          curl -s -H "Authorization: token $GITHUB_TOKEN" "https://api.github.com/repos/$REPO/contents/$FOLDER" -i
-          
+
           # Initialize an empty JSON array to store image data
           IMAGE_LIST="[]"
 
@@ -60,6 +59,14 @@ jobs:
 
           # Save to JSON
           echo "$IMAGE_LIST" > "$OUTPUT_FILE"
+
+      - name: Debug API Response
+        run: |
+          RESPONSE=$(curl -s -H "Authorization: token $GITHUB_TOKEN" "https://api.github.com/repos/$REPO/contents/$FOLDER")
+          echo "Response: $RESPONSE"
+          echo "Headers:"
+          curl -I -H "Authorization: token $GITHUB_TOKEN" "https://api.github.com/repos/$REPO/contents/$FOLDER"
+        
 
       - name: Commit and Push Changes
         env:
