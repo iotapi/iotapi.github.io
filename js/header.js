@@ -6,6 +6,11 @@ header__template.innerHTML = `
     <img src="img/crest.png" style="max-width: 200px;">
     <h1>Kappa Kappa Psi - Iota Pi</h1>
     <h2>California Polytechnic State University</h2>
+    <div id = "links">
+        <a href="index.html">Home</a>
+        <a href="familytree.html">Family Tree</a>
+        <a href="history.html">History</a>
+    </div>
     <p>The Iota Pi website is currently under maintenance. Please come back soon or join the website team! Also we are testing things out currently!</p>
 `;
 
