@@ -1,19 +1,16 @@
-var folder = "images/";
 
-fetch(folder)
-    .then(response => response.text())  // Get response as text (HTML directory listing)
-    .then(data => {
-        let parser = new DOMParser();
-        let doc = parser.parseFromString(data, "text/html"); // Parse as HTML
+var repo = "iotapi/iotapi.github.io";
+var folder = "img/";
 
-        doc.querySelectorAll("a").forEach(link => {
-            let href = link.getAttribute("href");
-
-            if (href && href.match(/\.(jpe?g|png|gif)$/i)) { // Check for image file extensions
+fetch(`https://api.github.com/repos/${repo}/contents/${folder}`)
+    .then(response => response.json())
+    .then(files => {
+        files.forEach(file => {
+            if (file.name.match(/\.(jpe?g|png|gif)$/i)) {
                 let img = document.createElement("img");
-                img.src = folder + href;
+                img.src = file.download_url;
                 document.body.appendChild(img);
             }
         });
     })
-    .catch(error => console.error("Error fetching folder:", error));
+    .catch(error => console.error("Error fetching images:", error));
