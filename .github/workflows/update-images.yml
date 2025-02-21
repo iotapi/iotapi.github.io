@@ -17,8 +17,8 @@ jobs:
       - name: Get Image List and Update JSON
         run: |
           REPO="iotapi/iotapi.github.io"
-          FOLDER="photos"
-          OUTPUT_FILE="photos/images.json"
+          FOLDER="pictures"
+          OUTPUT_FILE="pictures/images.json"
 
           # Fetch GitHub API Data
           IMAGE_LIST=$(curl -s "https://api.github.com/repos/$REPO/contents/$FOLDER" | jq -r '[.[] | select(.name | test("\\.(jpg|jpeg|png|gif)$"; "i")) | .name]')
@@ -33,6 +33,6 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
-          git add photos/images.json
+          git add pictures/images.json
           git commit -m "Auto-update images.json" || echo "No changes to commit"
           git push
