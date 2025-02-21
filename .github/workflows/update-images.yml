@@ -28,11 +28,11 @@ jobs:
 
       - name: Commit and Push Changes
         env:
-            GITHUB_TOKEN: ${{ secrets.GH_PAT }}  # Use the stored token
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use GitHub's built-in token
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
           git add img/images.json
           git commit -m "Auto-update images.json" || echo "No changes to commit"
-          git push
+          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git main
+
