@@ -10,6 +10,7 @@ header__template.innerHTML = `
         <a href="index.html">Home</a>
         <a href="familytree.html">Family Tree</a>
         <a href="history.html">History</a>
+        <a href="photos.html">Photos</a>
     </div>
     <p>The Iota Pi website is currently under maintenance. Please come back soon or join the website team! Also we are testing things out currently!</p>
 `;
