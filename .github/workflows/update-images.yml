@@ -24,7 +24,7 @@ jobs:
       - name: Run Script to Update images.json
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
-        run: node js/generate-images-json.js
+        run: node js/generate-images-json.mjs
 
       - name: Commit and Push Changes
         run: |
