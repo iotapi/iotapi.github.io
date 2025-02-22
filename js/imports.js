@@ -1,0 +1,1 @@
+import { lazyLoadImages } from './lazyLoad.js';
