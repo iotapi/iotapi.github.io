@@ -19,13 +19,34 @@ async function fetchImages() {
     }
 
     const files = await response.json();
-    
-    return files
-        .filter(file => file.name.match(/\.(jpe?g|png|gif)$/))
-        .map(file => ({
+
+    // Filter only image files
+    const imageFiles = files.filter(file => file.name.match(/\.(jpe?g|png|gif)$/));
+
+    // Fetch last modified date for each file
+    const imageData = await Promise.all(imageFiles.map(async file => {
+        const commitApiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/commits?path=${imageFolder}/${file.name}&per_page=1`;
+
+        const commitResponse = await fetch(commitApiUrl, {
+            headers: { Authorization: `token ${githubToken}` }
+        });
+
+        if (!commitResponse.ok) {
+            console.error(`Error fetching commit info for ${file.name}: ${commitResponse.statusText}`);
+            return null;
+        }
+
+        const commitData = await commitResponse.json();
+        const uploadDate = commitData.length > 0 ? commitData[0].commit.committer.date : null;
+
+        return {
             filename: file.name,
             path: file.path,
-        }));
+            upload_date: uploadDate
+        };
+    }));
+
+    return imageData.filter(img => img !== null);
 }
 
 async function generateJson() {
