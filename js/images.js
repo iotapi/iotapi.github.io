@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return Promise.all(imagePromises);
     })
     .then(() => {
-        lazyLoadImages('.lazy-image', { threshold: 0.7 });
+        lazyLoadImages('.lazy-image', { threshold: 0.2 });
     })
     .catch(error => console.error("Error loading images:", error));
 
