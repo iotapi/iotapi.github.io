@@ -27,9 +27,11 @@
                     .then(() => {
                         console.log('SUCCESS!');
                         success.innerHTML = "Thanks! Message recieved."
+                        success.style.color = "green";
                         document.getElementById('contact-form').appendChild(success)
                     }, (error) => {
                         success.innerHTML = "Oops, there was an error. Please contact webmaster@iotapi.com."
+                        success.style.color = "red";
                         console.log('FAILED...', error);
                     });
                 
