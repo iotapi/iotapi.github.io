@@ -6,6 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/global.css"><!--Global Stylesheet for every page-->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // https://dashboard.emailjs.com/admin/account
+            emailjs.init({
+              publicKey: "iXy6ZjD2x6bCmJH8N",
+            });
+        })();
+    </script>
+       <script type="text/javascript">
+        window.onload = function() {
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                // these IDs from the previous steps
+                emailjs.sendForm('service_x391wkp', 'template_tx1dv2n', this)
+                    .then(() => {
+                        console.log('SUCCESS!');
+                    }, (error) => {
+                        console.log('FAILED...', error);
+                    });
+            });
+        }
+    </script>
     <title>Kappa Kappa Psi - Iota Pi</title>
 </head>
 
@@ -23,6 +46,19 @@
             href="https://forms.gle/3Zyfdxk57f22eAdg6">Click Here!</a></p>
     <p><a href="docs/Iota Pi Bylaws - 2024 Version 2.pdf">Bylaws</a></p>
     <p><a href="dvd_logo.html">DVD Logo</a></p>
+    <form id="contact-form">
+        <!-- To simplify the tutorial, the value is static. -->
+        <input type="hidden" name="contact_number" value="697483">
+        <label>Name</label><br/>
+        <input type="text" name="user_name">
+        <br/>
+        <label>Email</label><br/>
+        <input type="email" name="user_email">
+        <br/>
+        <label>Message</label><br/>
+        <textarea name="message"></textarea>
+        <input type="submit" value="Send">
+    </form>
     <img src="img/IMG_6200.JPG" alt="" width="100%" style="max-width: 1000px;" id = "banner">
     <div id="footer"><!-- NOTE: To find the footer code, please look in "footer.js"--></div>
     <script src="js/footer.js"></script>
