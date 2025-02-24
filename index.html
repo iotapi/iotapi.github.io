@@ -16,6 +16,9 @@
         })();
     </script>
        <script type="text/javascript">
+        const success = document.createElement("p");
+        success.className = "form-success";
+
         window.onload = function() {
             document.getElementById('contact-form').addEventListener('submit', function(event) {
                 event.preventDefault();
@@ -23,9 +26,13 @@
                 emailjs.sendForm('service_x391wkp', 'template_tx1dv2n', this)
                     .then(() => {
                         console.log('SUCCESS!');
+                        success.innerHTML = "Thanks! Message recieved."
+                        document.getElementById('contact-form').appendChild(success)
                     }, (error) => {
+                        success.innerHTML = "Oops, there was an error. Please contact webmaster@iotapi.com."
                         console.log('FAILED...', error);
                     });
+                
             });
         }
     </script>
