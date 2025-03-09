@@ -30,6 +30,7 @@ async function fetchImages() {
             path: file.path
         }
     });
+    console.log(imageData);
 
     return imageData.filter(img => img !== null);
 }
