@@ -26,29 +26,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
         run: node js/generate-images-json.mjs
 
-      - name: Commit and Push Changes
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add images.json
-          git commit -m "Auto-update images.json with upload timestamps" || echo "No changes to commit"
-          git push
-
-  update-headshots:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
-
-      - name: Set Up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-
-      - name: Install Dependencies
-        run: npm install node-fetch
-
       - name: Run Script to Update actives.json
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
