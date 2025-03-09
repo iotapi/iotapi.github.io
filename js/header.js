@@ -10,6 +10,7 @@ header__template.innerHTML = `
         <a href="index.html">Home</a>
         <a href="familytree.html">Family Tree</a>
         <a href="creed.html">Values</a>
+        <a href="members.html">Members</a>
         <a href="history.html">History</a>
         <a href="photos.html">Photos</a>
     </div>

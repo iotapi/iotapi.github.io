@@ -15,12 +15,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Display sorted images
         files.forEach(file => {
+            const memberElement = document.createElement("div");
+            memberElement.className = "brother"
+
             const imgElement = document.createElement("img");
             imgElement.className = "lazy-image headshot"
             imgElement.src = "img/placeholder.jpg"
             imgElement.dataset.src = `${folderPath}/${file.filename}`;
             imgElement.alt = file.filename;
-            gallery.appendChild(imgElement);
+
+            // Remove the ".jpg", then split between the name and class
+            const memberData = file.filename.split(".")[0].split(" - ")
+            const memberName = document.createElement("p");
+            const memberClass = document.createElement("p");
+            memberName.className = "member-name";
+            memberClass.className = "member-class";
+            memberName.innerHTML = `<b>${memberData[0]}</b>`;
+            memberClass.innerHTML = memberData[1];
+
+            memberElement.appendChild(imgElement);
+            memberElement.appendChild(memberName);
+            memberElement.appendChild(memberClass);
+
+            gallery.appendChild(memberElement);
 
             let imgPromise = new Promise(resolve => {
                 imgElement.onload = resolve;
