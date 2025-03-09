@@ -32,7 +32,7 @@ async function fetchImages() {
     });
     console.log(imageData);
 
-    return imageData.filter(img => img !== null);
+    return imageData;
 }
 
 async function generateJson() {
