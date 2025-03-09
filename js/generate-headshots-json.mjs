@@ -24,12 +24,12 @@ async function fetchImages() {
     const imageFiles = files.filter(file => file.name.match(/\.(jpe?g|png|gif)$/i));
 
     // Fetch last modified date for each file
-    const imageData = await Promise.all(imageFiles.map(async file => {
+    const imageData = imageFiles.map(file => {
         return {
             filename: file.name,
             path: file.path
-        };
-    }));
+        }
+    });
 
     return imageData.filter(img => img !== null);
 }
