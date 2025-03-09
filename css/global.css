@@ -1,5 +1,6 @@
 body{
     font-family: sans-serif;
+    margin: 0;
 }
 
 #header {
@@ -9,7 +10,22 @@ body{
 }
 
 #header a {
-    padding: 3em;
+    margin: 3em;
+}
+
+#header #logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#logo div {
+    margin: 0 0 0 3em;
+}
+
+#header img {
+    height:80px;
+    width: auto;
 }
 
 a:visited {
@@ -18,4 +34,13 @@ a:visited {
 
 #contact-form .form-success {
     font-weight: bold;
+}
+
+#footer {
+    background-color: #eee;
+    padding: 1em;
+}
+
+main {
+    padding: 2em;
 }
