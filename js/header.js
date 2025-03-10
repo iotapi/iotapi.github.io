@@ -3,13 +3,18 @@
 const header__template = document.createElement('template');
 
 header__template.innerHTML = `
-    <img src="img/crest.png" style="max-width: 200px;">
-    <h1>Kappa Kappa Psi - Iota Pi</h1>
-    <h2>California Polytechnic State University</h2>
+    <div id = "logo">
+        <img src="img/crest.png" style="max-width: 200px;">
+        <div id = "logo-text">
+            <h1>Kappa Kappa Psi - Iota Pi</h1>
+            <h2>California Polytechnic State University</h2>
+        </div>
+    </div>
     <div id = "links">
         <a href="index.html">Home</a>
         <a href="familytree.html">Family Tree</a>
         <a href="creed.html">Values</a>
+        <a href="members.html">Members</a>
         <a href="history.html">History</a>
         <a href="photos.html">Photos</a>
     </div>
