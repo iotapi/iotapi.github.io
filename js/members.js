@@ -7,11 +7,15 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch("actives.json")
     .then(response => response.json())
     .then(files => {
+        const execCouncil = document.getElementById("exec-council")
         const gallery = document.getElementById("gallery");
         let imagePromises = [];
 
         // // Sort images by upload date (newest first)
         // files.sort((a, b) => new Date(b.upload_date) - new Date(a.upload_date));
+
+        // Separating out Exec council(any image with 3 sections)
+        console.log(files.filter((image) => image.filename.split(".")[0].split(" - ").length));
 
         // Display sorted images
         files.forEach(file => {
