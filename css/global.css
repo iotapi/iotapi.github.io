@@ -45,3 +45,14 @@ a:visited {
 main {
     padding: 2em;
 }
+
+#banner {
+    width: 100%;
+}
+
+#calendar {
+    width: 100%;
+    max-width: 500px;
+    height: 600px;
+    border-width: 0;
+}
