@@ -52,7 +52,7 @@ main {
 
 #calendar {
     width: 100%;
-    max-width: 500px;
+    max-width: 300px;
     height: 600px;
     border-width: 0;
 }
