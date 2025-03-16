@@ -1,4 +1,4 @@
-#gallery {
+.gallery {
     display: flex;
     flex-wrap: wrap;
     align-content: center;
@@ -10,4 +10,12 @@
     width: 200px;
     height: 200px;
     object-fit: cover;
+}
+
+.brother {
+    margin: 1em 0;
+}
+
+.brother p {
+    margin: 5px 0;
 }
