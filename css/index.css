@@ -1,0 +1,9 @@
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+section {
+    max-width: 500px;
+}
