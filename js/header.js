@@ -21,7 +21,9 @@ header__template.innerHTML = `
     <!-- Always visible items in the nav bar -->
     <ul>
         <li>
-            <img src="img/crest.png" style="max-width: 200px;">
+            <a href="index.html">
+                <img src="img/crest.png" style="max-width: 200px;">
+            </a>
         </li>
     </ul>
     <!-- The hamburger menu -->
