@@ -1,6 +1,9 @@
 const folderPath = "pictures/"
 const imageElements = []
 
+var glide = new Glide('.glide')
+glide.mount()
+
 document.addEventListener("DOMContentLoaded", function () {
     const jsonFile = `images.json`;
 

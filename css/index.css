@@ -11,10 +11,27 @@ main {
 /* section {
     max-width: 500px;
 } */
-
+.carousel {
+    position: relative;
+}
 
 .carousel-img {
     width: 100%;
     height: 60vh;
     object-fit: cover;
+}
+
+#carousel-title {
+    width: 600px;
+    max-width: 70vw;
+    background-color: rgba(256, 256, 256, 0.4);
+    position: absolute;
+    padding: 20px;
+    right: 10%;
+    bottom: 10%;
+}
+
+#carousel-title h1 {
+    font-size: 4em;
+    margin: 0;
 }
