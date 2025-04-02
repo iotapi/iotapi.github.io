@@ -7,6 +7,14 @@
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/global.css"><!--Global Stylesheet for every page-->
     <link rel="stylesheet" href="css/index.css">
+    <!-- Carousel Libraries -->
+    <!-- Required Core Stylesheet -->
+    <link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.core.min.css">
+    <!-- Optional Theme Stylesheet -->
+    <link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.theme.min.css">
+
+
+    <!-- Comment Form Library -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
         (function () {
@@ -48,6 +56,20 @@
     <script src="js/header.js"></script>
     <!-- End of Header-->
     <main>
+        <section class="carousel">
+            <!-- Carousel Placement -->
+            <div class="glide">
+                <div class="glide__track" data-glide-el="track">
+                    <ul class="glide__slides">
+                        <!-- Images are loaded through the carousel-loader.js file -->
+                    </ul>
+                </div>
+                <div class="glide__arrows" data-glide-el="controls">
+                    <button class="glide__arrow glide__arrow--left" data-glide-dir="<">&lt;</button>
+                    <button class="glide__arrow glide__arrow--right" data-glide-dir=">">➔</button>
+                </div>
+            </div>                                    
+        </section>
         <section>
             <p>Recent & Upcoming Chapter Activities</p>
             <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FLos_Angeles&showPrint=0&showCalendars=0&mode=AGENDA&src=MWhxcmplcHRwZGZzMzNxMzdxYTdvc2EwYWtAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%23D50000" frameborder="0" scrolling="no" id = "calendar"></iframe>
@@ -181,6 +203,9 @@
     <div id="footer"><!-- NOTE: To find the footer code, please look in "footer.js"--></div>
     <script src="js/footer.js"></script>
     <!-- End of Footer -->
+    <!-- Carousel Code -->
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+    <script src="js/carousel-loader.js"></script>
 </body>
 
 </html>
