@@ -12,10 +12,12 @@ section {
     flex-wrap: wrap;
     align-items: stretch;
     justify-content: space-around;
+    align-content: space-between;
 }
 
 .responsive-double section {
     min-width: 40%;
+    margin-top: 10px;
 }
 
 .carousel {
@@ -58,9 +60,20 @@ section {
 
 #calendar {
     background-color: #c2a83e;
+    color: white;
+}
+
+#calendar iframe {
+    width: 100%;
 }
 
 #contact {
     background-color: #243e36;
     color: white;
+}
+
+#contact textarea{
+    width: 400px;
+    max-width: 100%;
+    height: 200px;
 }

@@ -119,10 +119,3 @@ nav label {
 #banner {
     width: 100%;
 }
-
-#calendar {
-    width: 100%;
-    max-width: 300px;
-    height: 600px;
-    border-width: 0;
-}
