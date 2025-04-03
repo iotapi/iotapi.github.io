@@ -2,15 +2,22 @@
     background-color: #c2a83e;
 } */
 
-main {
-    /* display: flex; */
+
+section {
+    padding: 20px;
+}
+
+.responsive-double {
+    display: flex;
     flex-wrap: wrap;
+    align-items: stretch;
     justify-content: space-around;
 }
 
-/* section {
-    max-width: 500px;
-} */
+.responsive-double section {
+    min-width: 40%;
+}
+
 .carousel {
     position: relative;
 }
@@ -42,4 +49,18 @@ main {
 
 #carousel-title h2 {
     margin: 0;
+}
+
+#events {
+    background-color: #060760;
+    color: white;
+}
+
+#calendar {
+    background-color: #c2a83e;
+}
+
+#contact {
+    background-color: #243e36;
+    color: white;
 }
