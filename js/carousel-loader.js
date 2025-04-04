@@ -40,7 +40,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
         return Promise.all(imagePromises);
     }).then(() => {
-        var glide = new Glide('.glide')
+        var glide = new Glide('.glide', {
+            type: 'carousel',
+            perView: 2,
+            focusAt: 'center',
+            autoplay: 4000,
+            breakpoints: {
+                900: {
+                    perView: 1
+                }
+            }
+        })
         glide.mount()
     })
     .catch(error => console.error("Error loading images:", error));

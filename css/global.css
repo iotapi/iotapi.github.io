@@ -11,7 +11,8 @@ a:visited {
 /* HEADER SYTLING */
 
 #header {
-    position: sticky;
+    position: fixed;
+    width: 100%;
     top: 0;
     background-color: #f7f7f7;
     z-index: 1000;
@@ -38,7 +39,7 @@ nav ul {
     /* Make the markers disappear */
     list-style-type: none;
     padding: 0;
-    margin: 0.2em;
+    margin: 10px;
 }
 
 nav ul li {
@@ -112,9 +113,9 @@ nav label {
     padding: 1em;
 }
 
-/* main {
-    padding: 2em;
-} */
+main {
+    margin-top: 80px;
+}
 
 #banner {
     width: 100%;
