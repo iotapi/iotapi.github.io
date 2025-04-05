@@ -53,10 +53,39 @@ section {
     margin: 0;
 }
 
+/* EVENTS SECTION */
+
 #events {
     background-color: #060760;
     color: white;
 }
+
+#events-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+#events .event {
+    background-color: white;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    max-width: 90%;
+    padding: 30px;
+    margin: 20px 0;
+}
+
+#events .event h1 {
+    margin: 0 0 10px 0;
+}
+
+#events .event img {
+    width: 100%;
+}
+
+/* END OF EVENTS SECTION */
 
 #calendar {
     background-color: #c2a83e;
