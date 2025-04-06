@@ -12,18 +12,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Display sorted images
         activities.forEach(activity => {
+            const activityData = activity.filename.split(" - ");
             const eventContainer = document.createElement("div");
             eventContainer.className = "event"
 
             const eventTitle = document.createElement("h1");
-            eventTitle.innerHTML = activity.title
+            eventTitle.innerHTML = activityData[0]
 
             const imgElement = document.createElement("img");
-            imgElement.src = `events/${activity.image}`;
-            imgElement.alt = activity.title;
+            imgElement.src = activity.path;
+            imgElement.alt = activityData[0];
 
             const descriptonElement = document.createElement("p")
-            descriptonElement.innerHTML = activity.description
+            descriptonElement.innerHTML = "none"
 
             eventContainer.appendChild(eventTitle)
             if (activity.image != "none")
