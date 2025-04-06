@@ -1,8 +1,7 @@
 [
-    {
-        "title": "Alumni Weekend 2025",
-        "event_date": "2025-03-09T00:00:00Z",
-        "image": "452025.png",
-        "description": "Please join us for Alumni Weekend this year!"
-    }
+  {
+    "filename": "452025.png",
+    "path": "events/452025.png",
+    "upload_date": "2025-04-05T19:24:12Z"
+  }
 ]
