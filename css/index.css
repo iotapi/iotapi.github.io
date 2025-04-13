@@ -1,0 +1,108 @@
+/* body {
+    background-color: #c2a83e;
+} */
+
+
+section {
+    padding: 20px;
+}
+
+.responsive-double {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: space-around;
+    align-content: space-between;
+}
+
+.responsive-double section {
+    min-width: 40%;
+    margin-top: 10px;
+}
+
+.carousel {
+    position: relative;
+}
+
+.carousel-img {
+    width: 100%;
+    height: 60vh;
+    object-fit: cover;
+}
+
+#carousel-title {
+    width: 600px;
+    max-width: 70vw;
+    background-color: rgba(256, 256, 256, 0.4);
+    position: absolute;
+    padding: 20px;
+    right: 10%;
+    bottom: 10%;
+    font-family: 'Judson', serif;
+    font-weight: 800;
+    font-style: normal;
+    color: #060760;
+}
+
+#carousel-title h1 {
+    font-size: 4em;
+    margin: 0;
+}
+
+#carousel-title h2 {
+    margin: 0;
+}
+
+/* EVENTS SECTION */
+
+#events {
+    background-color: #060760;
+    color: white;
+}
+
+#events-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+#events .event {
+    background-color: white;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    max-width: 90%;
+    padding: 30px;
+    margin: 20px 0;
+}
+
+#events .event h1 {
+    margin: 0 0 10px 0;
+}
+
+#events .event img {
+    width: 100%;
+}
+
+/* END OF EVENTS SECTION */
+
+#calendar {
+    background-color: #c2a83e;
+    color: white;
+}
+
+#calendar iframe {
+    width: 100%;
+}
+
+#contact {
+    background-color: #243e36;
+    color: white;
+}
+
+#contact textarea{
+    width: 400px;
+    max-width: 100%;
+    height: 200px;
+}

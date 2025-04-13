@@ -68,10 +68,6 @@
     "path": "headshots/Matthew Pinney - AΛ - Treasurer.jpg"
   },
   {
-    "filename": "Noah Ravetch - AH.jpg",
-    "path": "headshots/Noah Ravetch - AH.jpg"
-  },
-  {
     "filename": "Paula Crossland - AK - Recording Secretary.jpg",
     "path": "headshots/Paula Crossland - AK - Recording Secretary.jpg"
   },
@@ -110,5 +106,9 @@
   {
     "filename": "Yuke Billbe - AΛ.jpg",
     "path": "headshots/Yuke Billbe - AΛ.jpg"
+  },
+  {
+    "filename": "Zac Jacobson - AK.jpg",
+    "path": "headshots/Zac Jacobson - AK.jpg"
   }
 ]

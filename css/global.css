@@ -1,37 +1,108 @@
-body{
-    font-family: sans-serif;
+body {
+    font-family: "Instrument Sans", sans-serif;
     margin: 0;
     cursor: url('small crest.png'), auto;
-}
-
-#header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#header a {
-    margin: 3em;
-}
-
-#header #logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#logo div {
-    margin: 0 0 0 3em;
-}
-
-#header img {
-    height:80px;
-    width: auto;
 }
 
 a:visited {
     color: blue;
 }
+
+/* HEADER SYTLING */
+
+#header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background-color: #f7f7f7;
+    z-index: 1000;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+}
+
+nav a:visited {
+    color: black;
+}
+
+/* Here we start */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+nav ul {
+    /* Make the markers disappear */
+    list-style-type: none;
+    padding: 0;
+    margin: 10px;
+}
+
+nav ul li {
+    /* Puts the elements in a single line */
+    display: inline-flex;
+    padding: 0.3em 1em;
+}
+
+/* These two lines make the checkbox and the label disappear when we are in desktop mode. */
+nav input[type="checkbox"],
+nav label {
+    display: none;
+}
+
+/* This start to get interesting: we go into mobile phone mode */
+@media (max-width: 576px) {
+
+    /* Here is the magic: if the checkbox is not marked, the adjacent list is not displayed */
+    nav input[type="checkbox"]:not(:checked)+ul {
+        display: none;
+    }
+
+    nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    /* Stlying the menu icon, the checkbox stays hidden */
+    nav label {
+        text-align: right;
+        display: flex;
+        align-items: center;
+        padding: 1em;
+    }
+
+    /* Because we are in mobile mode, we want to display it as a vertical list */
+    nav ul {
+        display: block;
+    }
+
+    /* We have two lists: the first one are the always visibile items in the 
+      menu bar. The second one is the one that will be hidden */
+    nav ul:last-child {
+        width: 100%;
+        flex-basis: 100%;
+    }
+
+    nav ul li {
+        margin-bottom: 0;
+        width: 100%;
+        text-align: right;
+        padding-bottom: 1em;
+    }
+}
+
+#header img {
+    height: 60px;
+    width: auto;
+}
+
+/* END OF HEADER CSS */
 
 #contact-form .form-success {
     font-weight: bold;
@@ -43,5 +114,9 @@ a:visited {
 }
 
 main {
-    padding: 2em;
+    margin-top: 80px;
+}
+
+#banner {
+    width: 100%;
 }
