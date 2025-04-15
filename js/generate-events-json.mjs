@@ -21,7 +21,7 @@ async function fetchImages() {
     const files = await response.json();
 
     // Filter only image files
-    const imageFiles = files.filter(file => file.name.match(/\.(jpe?g|png|gif)$/i));
+    const imageFiles = files.filter(file => file.name.match(/\.(jpe?g|png|gif|txt)$/i));
 
     // Fetch last modified date for each file
     const imageData = await Promise.all(imageFiles.map(async file => {
