@@ -85,6 +85,10 @@ section {
     width: 100%;
 }
 
+#events .event p {
+    font-size: 1.5em;
+}
+
 /* END OF EVENTS SECTION */
 
 #calendar {

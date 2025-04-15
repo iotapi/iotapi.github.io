@@ -15,22 +15,26 @@ document.addEventListener("DOMContentLoaded", function () {
             const activityData = activity.filename.split(" - ");
             const eventContainer = document.createElement("div");
             eventContainer.className = "event"
-
             const eventTitle = document.createElement("h1");
             eventTitle.innerHTML = activityData[0]
-
-            const imgElement = document.createElement("img");
-            imgElement.src = activity.path;
-            imgElement.alt = activityData[0];
-
-            const descriptonElement = document.createElement("p")
-            descriptonElement.innerHTML = "none"
-
             eventContainer.appendChild(eventTitle)
-            if (activity.image != "none")
+            if (activity.filename.match(/\.(jpe?g|png|gif)$/i))
+            {
+                const imgElement = document.createElement("img");
+                imgElement.src = activity.path;
+                imgElement.alt = activityData[0];
                 eventContainer.appendChild(imgElement)
-            else
-                eventContainer.appendChild(descriptonElement)
+            } else if (activity.filename.match(/\.(txt)$/i))
+            {
+                fetch(activity.path)
+                .then((res) => res.text())
+                .then((text) => {
+                    const descriptonElement = document.createElement("p")
+                    descriptonElement.innerHTML = text
+                    eventContainer.appendChild(descriptonElement)
+                })
+                .catch((e) => console.error(e));
+            }
             gallery.appendChild(eventContainer);
 
             // let imgPromise = new Promise(resolve => {
