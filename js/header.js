@@ -43,6 +43,7 @@ header__template.innerHTML = `
         <li><a href="members.html">Members</a></li>
         <li><a href="history.html">History</a></li>
         <li><a href="photos.html">Photos</a></li>
+        <li><a href="resources.html">Resources</a></li>
     </ul>
 </nav>
 `;

@@ -40,6 +40,7 @@ nav ul {
     list-style-type: none;
     padding: 0;
     margin: 10px;
+    border: none;
 }
 
 nav ul li {
@@ -118,5 +119,7 @@ main {
 }
 
 #banner {
+    max-height: 50vh;
     width: 100%;
+    object-fit: cover;
 }
