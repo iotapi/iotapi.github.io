@@ -39,7 +39,7 @@
                     .then(() => {
                         console.log('SUCCESS!');
                         success.innerHTML = "Thanks! Message recieved."
-                        success.style.color = "green";
+                        success.style.color = "#bfebc0";
                         document.getElementById('contact-form').appendChild(success)
                     }, (error) => {
                         success.innerHTML = "Oops, there was an error. Please contact webmaster@iotapi.com."
@@ -106,7 +106,7 @@
                     <label>Message</label><br />
                     <textarea name="message"></textarea>
                     <br/>
-                    <input type="submit" value="Send">
+                    <input type="submit" class = "submit-button" value="Send">
                 </form>
             </section>
         </section>

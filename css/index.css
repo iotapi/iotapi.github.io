@@ -103,10 +103,32 @@ section {
 #contact {
     background-color: #243e36;
     color: white;
+    width: 500px;
+}
+
+#contact input {
+    width: 90%;
+    padding: 1em;
+}
+
+#contact .submit-button {
+    margin-top: 10px;
+    font-weight: bold;
+    width: 200px;
+    max-width: 100%;
+    align-self: center;
+    background-color: white;
+    border: 2px solid white;
+    color: #243e36;
+}
+
+#contact .submit-button:hover {
+    background-color: #243e36;
+    color: white;
 }
 
 #contact textarea{
-    width: 400px;
-    max-width: 100%;
+    width: 90%;
     height: 200px;
+    padding: 1em;
 }
