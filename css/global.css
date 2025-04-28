@@ -115,7 +115,9 @@ nav label {
 }
 
 main {
-    margin-top: 80px;
+    margin-top: 100px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 #banner {
