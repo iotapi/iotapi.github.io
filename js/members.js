@@ -63,9 +63,9 @@ document.addEventListener("DOMContentLoaded", function () {
       // // Exec Council
       execTitles = [
         "President",
-        "Vice President of Membership",
+        "VP of Membership",
         "Recording Secretary",
-        "Vice President of Service",
+        "VP of Service",
         "Treasurer",
         "Alumni Secretary",
         "Correspondence Secretary",
