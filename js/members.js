@@ -64,8 +64,8 @@ document.addEventListener("DOMContentLoaded", function () {
       execTitles = [
         "President",
         "VP of Membership",
-        "Recording Secretary",
         "VP of Service",
+        "Recording Secretary",
         "Treasurer",
         "Alumni Secretary",
         "Correspondence Secretary",
