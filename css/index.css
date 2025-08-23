@@ -53,6 +53,25 @@ section {
     margin: 0;
 }
 
+/* INTRO SECTION */
+#intro {
+    font-size: 1.2em;
+}
+
+#intro img {
+    width: 100%;
+}
+
+#intro .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+#intro .container div {
+    max-width: 500px;
+}
+
 /* EVENTS SECTION */
 
 #events {
