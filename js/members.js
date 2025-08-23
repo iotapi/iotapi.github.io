@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return filesList.splice(resultIndex, 1)[0];
       }
 
-      function generateImage(file, parent, title = "") {
+      function generateImage(file, parent, title = "", email = "") {
         const memberElement = document.createElement("div");
         memberElement.className = "brother";
 
@@ -47,9 +47,18 @@ document.addEventListener("DOMContentLoaded", function () {
           memberElement.appendChild(memberTitle);
         }
 
+        // Add everything to the site
         memberElement.appendChild(imgElement);
         memberElement.appendChild(memberName);
         memberElement.appendChild(memberClass);
+        // Add the email alias if it exists
+        if (email != "")
+        {
+          const emailAliasElement = document.createElement("p")
+          emailAliasElement.innerHTML = `<a href="mailto:${email}">${email}</a>`
+          memberElement.appendChild(emailAliasElement)
+        }
+        
 
         parent.appendChild(memberElement);
 
@@ -62,16 +71,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // // Exec Council
       execTitles = [
-        "President",
-        "VP of Membership",
-        "VP of Service",
-        "Recording Secretary",
-        "Treasurer",
-        "Alumni Secretary",
-        "Correspondence Secretary",
+        {title: "President", email: "president@iotapi.com"},
+        {title: "VP of Membership", email: "vp@iotapi.com"},
+        {title: "VP of Service", email: "service@iotapi.com"},
+        {title: "Recording Secretary", email: "secretary@iotapi.com"},
+        {title: "Treasurer", email: "treasurer@iotapi.com"},
+        {title: "Alumni Secretary", email: "alumnisec@iotapi.com"},
+        {title: "Correspondence Secretary", email: "correspondence@iotapi.com"},
       ];
-      execTitles.forEach((title) => {
-        generateImage(findInName(files, title), execCouncil, title);
+      execTitles.forEach((position) => {
+        generateImage(findInName(files, position.title), execCouncil, position.title, position.email);
       });
       // Display sorted images
       files.forEach((file) => {
