@@ -100,6 +100,7 @@ ul.no-left-border li{
     list-style:none;
     line-height: 1.7em;
 }
+
 /*resources styling*/
 
 section.links{
@@ -115,7 +116,7 @@ section.links{
     div.CoC{
         display:inline;
     }
-     section.links{
+    section.links{
         display:inline;}
     /* Here is the magic: if the checkbox is not marked, the adjacent list is not displayed */
     nav input[type="checkbox"]:not(:checked)+ul {
