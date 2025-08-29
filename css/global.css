@@ -104,7 +104,9 @@ ul.no-left-border li{
 
 /* This start to get interesting: we go into mobile phone mode */
 @media (max-width: 576px) {
-
+    div.CoC{
+        display:inline;
+    }
     /* Here is the magic: if the checkbox is not marked, the adjacent list is not displayed */
     nav input[type="checkbox"]:not(:checked)+ul {
         display: none;
