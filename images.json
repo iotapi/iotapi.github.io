@@ -10,6 +10,11 @@
     "upload_date": "2025-04-15T18:04:01Z"
   },
   {
+    "filename": "IMG_0026.JPG",
+    "path": "pictures/IMG_0026.JPG",
+    "upload_date": "2025-09-21T02:51:35Z"
+  },
+  {
     "filename": "IMG_0208.JPG",
     "path": "pictures/IMG_0208.JPG",
     "upload_date": "2025-04-02T23:29:01Z"
@@ -125,8 +130,28 @@
     "upload_date": "2025-02-21T21:28:03Z"
   },
   {
+    "filename": "IMG_9049.JPG",
+    "path": "pictures/IMG_9049.JPG",
+    "upload_date": "2025-09-21T02:51:35Z"
+  },
+  {
     "filename": "IMG_9132.JPG",
     "path": "pictures/IMG_9132.JPG",
     "upload_date": "2025-04-02T23:29:01Z"
+  },
+  {
+    "filename": "IMG_9176.JPG",
+    "path": "pictures/IMG_9176.JPG",
+    "upload_date": "2025-09-21T02:51:35Z"
+  },
+  {
+    "filename": "IMG_9183.JPG",
+    "path": "pictures/IMG_9183.JPG",
+    "upload_date": "2025-09-21T02:51:35Z"
+  },
+  {
+    "filename": "IMG_9253.JPG",
+    "path": "pictures/IMG_9253.JPG",
+    "upload_date": "2025-09-21T02:51:35Z"
   }
 ]
