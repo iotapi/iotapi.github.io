@@ -86,6 +86,6 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add events.json
-          git commit -m "Auto-update images.json with upload timestamps" || echo "No changes to commit"
+          git commit -m "Auto-update events.json with upload timestamps" || echo "No changes to commit"
           git push
   
