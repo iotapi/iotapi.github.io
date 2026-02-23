@@ -1,0 +1,102 @@
+section {
+    padding: 2em;
+}
+
+#progress-bar {
+    border: 3px solid black;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5em
+}
+
+#progress-bar .trapezoid {
+    /* Height of the bar */
+    border-bottom: 67px solid #1e9600;
+    /* Angle of the right side */
+	border-right: 25px solid transparent;
+	height: 0;
+    /* Width of the bar */
+	width: 0%;
+    
+}
+
+
+#progress-bar h2 {
+    z-index: 100;
+    text-align: center;
+    position: relative;
+    top: -48px;
+    height: 0;
+
+    color: white;
+      text-shadow: 
+    -1px -1px 0 black,
+     1px -1px 0 black,
+    -1px  1px 0 black,
+     1px  1px 0 black;
+}
+
+#progress-bar h2 {
+    margin: 0
+}
+
+#mission-statement {
+    display: flex;
+    padding: 3em;
+    /* flex-wrap: wrap; */
+}
+
+#mission-statement img {
+    width: 50%;
+}
+
+#breakdown {
+    background-color: #060760;
+    color: white;
+}
+
+#fundraising-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+
+#sponsors {
+    background-color: #243e36;
+    color: white;
+}
+
+.sponsors-list  {
+    display: flex;
+    justify-content: space-around;
+}
+
+.sponsors-list div {
+    border: 2px solid white;
+    padding: 1em;
+}
+
+#support-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.support-item {
+    margin: 10px;
+}
+
+.support-item button {
+    background-color: #c2a83e;
+    border: none;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    border: 2px solid #c2a83e;
+}
+
+.support-item button:hover {
+    background-color: white;
+    color: #c2a83e;
+    border: 2px solid #c2a83e;
+}
