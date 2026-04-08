@@ -43,11 +43,15 @@ section {
 #mission-statement {
     display: flex;
     padding: 3em;
-    /* flex-wrap: wrap; */
+    flex-wrap: wrap;
 }
 
+#mission-statement p {
+    max-width: 800px;
+}
 #mission-statement img {
-    width: 50%;
+    width: 40%;
+    min-width: 300px;
 }
 
 #breakdown {
@@ -69,6 +73,7 @@ section {
 .sponsors-list  {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .sponsors-list div {

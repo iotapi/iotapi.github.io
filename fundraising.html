@@ -14,17 +14,6 @@
     <div id="header"><!-- NOTE: To find the header code, please look in "header.js"--></div>
     <script src="js/header.js"></script>
     <main>
-        <!-- 
-
-
-
-            This is a template html file to be used to make new files. Please duplicate this
-            file if you want to make a new page.
-            
-            
-            
-        -->
-
         <!-- Mission -->
         <section id="goals">
             <h1>Fundraising Mission: Get our Brothers to WDC!</h1>
@@ -95,61 +84,13 @@
         <section>
             <h1>Support Us!</h1>
             <div id="support-items">
-                <div class="support-item">
-                    <img src="fundraising-data/image.png" alt="">
-                    <h2>Registration Fee</h2>
-                    <script async
+                <script async
                     src="https://js.stripe.com/v3/buy-button.js">
-                    </script>
-
-                    <stripe-buy-button
-                    buy-button-id="buy_btn_1TJNmLGxEcS9BmG1o72x8t3k"
-                    publishable-key="pk_live_51T47o7GxEcS9BmG1olDbvhq7UC5hocFgZ7Va8iEQ3kXmvCva6Ub6Yrvv669Xg31rc8PAZpqrqVTu1xpvRBnIm8sE00yBnid0lt"
-                    >
-                    </stripe-buy-button>
-                </div>
-                <div class="support-item">
-                    <img src="fundraising-data/image copy.png" alt="">
-                    <h2>Hotel Room</h2>
-                    <script async
-                    src="https://js.stripe.com/v3/buy-button.js">
-                    </script>
-
-                    <stripe-buy-button
-                    buy-button-id="buy_btn_1TJfG4GxEcS9BmG1fCmcA8Um"
-                    publishable-key="pk_live_51T47o7GxEcS9BmG1olDbvhq7UC5hocFgZ7Va8iEQ3kXmvCva6Ub6Yrvv669Xg31rc8PAZpqrqVTu1xpvRBnIm8sE00yBnid0lt"
-                    >
-                    </stripe-buy-button>
-                </div>
-                <div class="support-item">
-                    <img src="fundraising-data/image copy 2.png" alt="">
-                    <h2>Gas</h2>
-
-                    <script async
-                    src="https://js.stripe.com/v3/buy-button.js">
-                    </script>
-
-                    <stripe-buy-button
-                    buy-button-id="buy_btn_1TJNWsGxEcS9BmG1LcnnJK3T"
-                    publishable-key="pk_live_51T47o7GxEcS9BmG1olDbvhq7UC5hocFgZ7Va8iEQ3kXmvCva6Ub6Yrvv669Xg31rc8PAZpqrqVTu1xpvRBnIm8sE00yBnid0lt"
-                    >
-                    </stripe-buy-button>
-                </div>
-                <div class="support-item">
-                    <img src="fundraising-data/image copy 3.png" alt="">
-                    <h2>Miscellaneous Donation</h2>
-                    <script async
-                    src="https://js.stripe.com/v3/buy-button.js">
-                    </script>
-
-                    <stripe-buy-button
-                    buy-button-id="buy_btn_1TJNcIGxEcS9BmG1LYinlLiX"
-                    publishable-key="pk_live_51T47o7GxEcS9BmG1olDbvhq7UC5hocFgZ7Va8iEQ3kXmvCva6Ub6Yrvv669Xg31rc8PAZpqrqVTu1xpvRBnIm8sE00yBnid0lt"
-                    >
-                    </stripe-buy-button>
-                </div>
+                </script>
+                <!-- Support items added dynamically using script in js/fundraising.js -->
             </div>
         </section>
+        <script src="js/fundraising.js"></script>
 
         <!-- Contact Form -->
         <section>
