@@ -1,6 +1,18 @@
 const folderPath = "headshots/";
 const imageElements = [];
 
+// Greek equivalents to allow for sorting
+const latinToGreekEquivalent = {
+  'A': 'Α', 'B': 'Β', 'G': 'Γ', 'D': 'Δ', 'E': 'Ε', 'Z': 'Ζ',
+  'H': 'Η', 'I': 'Ι', 'K': 'Κ', 'L': 'Λ', 'M': 'Μ', 'N': 'Ν',
+  'O': 'Ο', 'P': 'Π', 'R': 'Ρ', 'S': 'Σ', 'T': 'Τ', 'U': 'Υ',
+  'X': 'Ξ',
+};
+
+function toGreekEquivalent(str) {
+  return str.split('').map(ch => latinToGreekEquivalent[ch] ?? ch).join('');
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   const jsonFile = `actives.json`;
 
@@ -11,8 +23,6 @@ document.addEventListener("DOMContentLoaded", function () {
       const actives = document.getElementById("actives");
       let imagePromises = [];
 
-      // // Sort images by upload date (newest first)
-      // files.sort((a, b) => new Date(b.upload_date) - new Date(a.upload_date));
       function findInName(filesList, title) {
         // this filter is hellish and probably can be done with a regex but it's week 10 and I'm tired
         resultIndex = filesList.findIndex(
@@ -69,6 +79,17 @@ document.addEventListener("DOMContentLoaded", function () {
         imagePromises.push(imgPromise);
       }
 
+      // Sort the files by their membership class displayed after the "-"
+      function sortByMembershipClass(a, b)
+      {
+        const membershipClass_a = toGreekEquivalent(a.filename.split(" - ")[1])
+        const membershipClass_b = toGreekEquivalent(b.filename.split(" - ")[1])
+
+        if (membershipClass_a > membershipClass_b) return 1
+        if (membershipClass_b > membershipClass_a) return -1
+        return 0
+      }
+
       // // Exec Council
       execTitles = [
         {title: "President", email: "president@iotapi.com"},
@@ -83,6 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
         generateImage(findInName(files, position.title), execCouncil, position.title, position.email);
       });
       // Display sorted images
+      console.log(files.sort(sortByMembershipClass))
       files.forEach((file) => {
         generateImage(file, actives);
       });
