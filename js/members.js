@@ -1,6 +1,17 @@
 const folderPath = "headshots/";
 const imageElements = [];
 
+// // Exec Council
+execTitles = [
+    {title: "President", email: "president@iotapi.com"},
+    {title: "VP of Membership", email: "vp@iotapi.com"},
+    {title: "VP of Service", email: "service@iotapi.com"},
+    {title: "Recording Secretary", email: "secretary@iotapi.com"},
+    {title: "Treasurer", email: "treasurer@iotapi.com"},
+    {title: "Alumni Secretary", email: "alumnisec@iotapi.com"},
+    {title: "Correspondence Secretary", email: "correspondence@iotapi.com"},
+];
+
 // Greek equivalents to allow for sorting
 const latinToGreekEquivalent = {
   'A': 'Α', 'B': 'Β', 'G': 'Γ', 'D': 'Δ', 'E': 'Ε', 'Z': 'Ζ',
@@ -90,16 +101,6 @@ document.addEventListener("DOMContentLoaded", function () {
         return 0
       }
 
-      // // Exec Council
-      execTitles = [
-        {title: "President", email: "president@iotapi.com"},
-        {title: "VP of Membership", email: "vp@iotapi.com"},
-        {title: "VP of Service", email: "service@iotapi.com"},
-        {title: "Recording Secretary", email: "secretary@iotapi.com"},
-        {title: "Treasurer", email: "treasurer@iotapi.com"},
-        {title: "Alumni Secretary", email: "alumnisec@iotapi.com"},
-        {title: "Correspondence Secretary", email: "correspondence@iotapi.com"},
-      ];
       execTitles.forEach((position) => {
         generateImage(findInName(files, position.title), execCouncil, position.title, position.email);
       });
