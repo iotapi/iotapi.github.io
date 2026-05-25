@@ -5,8 +5,8 @@ const imageElements = [];
 execTitles = [
     {title: "President", email: "president@iotapi.com"},
     {title: "VP of Membership", email: "vp@iotapi.com"},
-    {title: "VP of Service", email: "service@iotapi.com"},
     {title: "Recording Secretary", email: "secretary@iotapi.com"},
+    {title: "VP of Service", email: "service@iotapi.com"},
     {title: "Treasurer", email: "treasurer@iotapi.com"},
     {title: "Alumni Secretary", email: "alumnisec@iotapi.com"},
     {title: "Correspondence Secretary", email: "correspondence@iotapi.com"},
