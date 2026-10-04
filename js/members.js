@@ -90,22 +90,41 @@ document.addEventListener("DOMContentLoaded", function () {
         imagePromises.push(imgPromise);
       }
 
+      // Sort by last name
+      function sortByLastName(a, b)
+      {
+        // Access the name
+        let nameA = a.filename.split(" - ")[0]
+        let nameB = b.filename.split(" - ")[0]
+        // Then, access the last name
+        let lastNameA = nameA.split(" ")[1]
+        let lastNameB = nameB.split(" ")[1]
+        return  lastNameA.localeCompare(lastNameB)
+      }
+
       // Sort the files by their membership class displayed after the "-"
       function sortByMembershipClass(a, b)
       {
-        const membershipClass_a = toGreekEquivalent(a.filename.split(" - ")[1])
-        const membershipClass_b = toGreekEquivalent(b.filename.split(" - ")[1])
+        const membershipClass_a = toGreekEquivalent(a.filename.split(" - ")[1].split(".")[0])
+        const membershipClass_b = toGreekEquivalent(b.filename.split(" - ")[1].split(".")[0])
 
-        if (membershipClass_a > membershipClass_b) return 1
-        if (membershipClass_b > membershipClass_a) return -1
-        return 0
+
+        const classComparison = membershipClass_a.localeCompare(membershipClass_b);
+
+        // Same membership class: sort members by last name.
+        if (classComparison === 0) {
+            return sortByLastName(a, b);
+        }
+
+        return classComparison;
       }
 
       execTitles.forEach((position) => {
         generateImage(findInName(files, position.title), execCouncil, position.title, position.email);
       });
       // Display sorted images
-      console.log(files.sort(sortByMembershipClass))
+      // sort by membership class
+      files.sort(sortByMembershipClass)
       files.forEach((file) => {
         generateImage(file, actives);
       });
